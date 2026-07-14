@@ -1,0 +1,72 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+  border: 2px solid transparent;
+  font-family: var(--font-body);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Primary — gold CTA */
+.primary {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  border-color: var(--color-accent);
+}
+
+.primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+/* Secondary — brand blue outline */
+.secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Secondary Light (on dark/image backgrounds) */
+.secondaryLight {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.secondaryLight:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-white);
+}
+
+/* Ghost */
+.ghost {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: transparent;
+  padding: 0 12px;
+}
+
+.ghost:hover {
+  background: var(--color-accent-light);
+}

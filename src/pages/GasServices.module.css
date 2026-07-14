@@ -1,0 +1,344 @@
+/* HERO */
+.hero {
+  background: var(--color-primary);
+  padding: 8rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+  margin-bottom: -2px;
+  transform: translateZ(0);
+}
+
+.heroBgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(39, 64, 105, 0.78);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumb span[aria-current] {
+  color: rgba(255,255,255,0.82);
+}
+
+.heroHeading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  color: var(--color-white);
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+  max-width: 620px;
+}
+
+.heroSub {
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.heroCTA {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.phoneBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: 2px solid var(--color-accent);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.phoneBtn:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.quoteBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: transparent;
+  color: var(--color-white);
+  border: 2px solid rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.quoteBtn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--color-white);
+}
+
+/* TRUST ROW — Gas Safe + Emergency side by side */
+.trustRow {
+  padding: 2.5rem 0;
+  background: var(--color-white);
+}
+
+.trustPair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (max-width: 720px) {
+  .trustPair {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* GAS SAFE CARD */
+.gasSafeBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 2px solid #cc0000;
+  border-radius: var(--radius);
+  padding: 1.375rem 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .gasSafeBox {
+    flex-direction: column;
+  }
+}
+
+.gasSafeLeft {
+  flex-shrink: 0;
+}
+
+.gasSafeIcon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.gasSafeHeading {
+  font-size: 1.125rem;
+  color: #cc0000;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+}
+
+.gasSafeReg {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #cc0000;
+  opacity: 0.8;
+  margin-bottom: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+.gasSafeText {
+  font-size: 0.9375rem;
+  color: #4a5568;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.gasSafeLink {
+  font-weight: 600;
+  color: #cc0000;
+  text-decoration: none;
+  border-bottom: 1px solid #cc0000;
+  padding-bottom: 1px;
+  font-size: 0.9rem;
+  transition: opacity var(--transition);
+}
+
+.gasSafeLink:hover {
+  opacity: 0.75;
+}
+
+/* EMERGENCY CARD */
+.emergencyBox {
+  background: #cc0000;
+  color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 1.375rem 1.5rem;
+}
+
+.emergencyHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+.warningIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.emergencyHeading {
+  font-size: clamp(1.0625rem, 2vw, 1.375rem);
+  color: var(--color-white);
+}
+
+.emergencyList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+  list-style: none;
+}
+
+.emergencyList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.92);
+}
+
+.stepNum {
+  font-weight: 700;
+  color: var(--color-white);
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.emergencyNum {
+  color: var(--color-white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.emergencyNumLarge {
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.875rem;
+}
+
+.bigNum {
+  font-family: var(--font-stat);
+  font-size: clamp(1.375rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-white);
+  text-decoration: none;
+  display: block;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.bigNum:hover {
+  opacity: 0.85;
+}
+
+.emergencyFree {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.65);
+}
+
+/* SERVICES */
+.servicesSection {
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(4rem, 8vw, 6rem);
+  background: var(--color-white);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.sectionHeading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sectionSub {
+  font-size: 1.0625rem;
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FAQ */
+.faqSection {
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(4rem, 8vw, 6rem);
+  background: var(--color-neutral);
+}
+
+.faqWrap {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* TESTIMONIALS */
+.testimonialsSection {
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(4rem, 8vw, 6rem);
+  background: var(--color-white);
+}
+
+@media (max-width: 860px) {
+  .heroCTA {
+    display: none;
+  }
+}

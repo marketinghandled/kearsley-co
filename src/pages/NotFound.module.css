@@ -1,0 +1,84 @@
+.section {
+  min-height: calc(100vh - 96px);
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  padding: 6rem 0;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 520px;
+}
+
+.logoWrap {
+  margin-bottom: 1.5rem;
+}
+
+.errorCode {
+  font-family: var(--font-stat);
+  font-size: clamp(6rem, 15vw, 10rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.9;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+}
+
+.sub {
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.82);
+  font-style: italic;
+}
+
+.hint {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  max-width: 400px;
+  margin-top: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quickContact {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.phone {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.phone:hover {
+  opacity: 0.8;
+}

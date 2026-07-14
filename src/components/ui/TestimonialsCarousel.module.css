@@ -1,0 +1,138 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .track > *:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .track {
+    grid-template-columns: 1fr;
+  }
+
+  .track > *:nth-child(2),
+  .track > *:nth-child(3) {
+    display: none;
+  }
+}
+
+.card {
+  background: var(--color-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  font-size: 1rem;
+}
+
+.star {
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.quote {
+  flex: 1;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 1rem;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+}
+
+.location {
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.12);
+  background: var(--color-white);
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.navBtn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.18);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--color-accent);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
