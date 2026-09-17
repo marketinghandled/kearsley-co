@@ -24,24 +24,7 @@ jobs:
       - name: Build
         run: npm run build:ssg
 
-      - name: Diagnose SFTP remote directory
-        run: |
-          sudo apt-get update -y >/dev/null && sudo apt-get install -y sshpass >/dev/null
-          echo "pwd" > sftp_batch.txt
-          echo "ls -la" >> sftp_batch.txt
-          sshpass -p "${{ secrets.IONOS_FTP_PASSWORD }}" sftp -oBatchMode=no -oStrictHostKeyChecking=no -b sftp_batch.txt "${{ secrets.IONOS_FTP_USERNAME }}@${{ secrets.IONOS_FTP_SERVER }}"
-
       - name: Deploy to IONOS via SFTP
-        uses: Dylan700/sftp-upload-action@v1.2.4
-        with:
-          server: ${{ secrets.IONOS_FTP_SERVER }}
-          port: 22
-          username: ${{ secrets.IONOS_FTP_USERNAME }}
-          password: ${{ secrets.IONOS_FTP_PASSWORD }}
-          uploads: |
-            ./dist/ => ./
-          delete: false
-
-      - name: Diagnose SFTP remote directory (after deploy)
         run: |
-          sshpass -p "${{ secrets.IONOS_FTP_PASSWORD }}" sftp -oBatchMode=no -oStrictHostKeyChecking=no -b sftp_batch.txt "${{ secrets.IONOS_FTP_USERNAME }}@${{ secrets.IONOS_FTP_SERVER }}"
+          sudo apt-get update -y >/dev/null && sudo apt-get install -y lftp >/dev/null
+          lftp -u "${{ secrets.IONOS_FTP_USERNAME }}","${{ secrets.IONOS_FTP_PASSWORD }}" sftp://${{ secrets.IONOS_FTP_SERVER }} -e "set sftp:auto-confirm yes; set ssl:verify-certificate no; mirror -R --verbose dist/ ./; bye"
