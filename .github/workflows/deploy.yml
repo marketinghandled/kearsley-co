@@ -25,11 +25,12 @@ jobs:
         run: npm run build:ssg
 
       - name: Deploy to IONOS via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: Dylan700/sftp-upload-action@v1.2.4
         with:
           server: ${{ secrets.IONOS_FTP_SERVER }}
           port: 22
           username: ${{ secrets.IONOS_FTP_USERNAME }}
           password: ${{ secrets.IONOS_FTP_PASSWORD }}
-          local_path: ./dist/*
-          remote_path: /public/
+          uploads: |
+            ./dist/ => ./public/
+          delete: false
