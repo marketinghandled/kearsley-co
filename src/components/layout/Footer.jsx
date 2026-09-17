@@ -18,11 +18,11 @@ export default function Footer() {
               Guiseley, Rawdon, Horsforth and across Leeds.
             </p>
             <div className={styles.contact}>
-              <a href="tel:01130000000" className={styles.contactLink}>
-                0113 XXX XXXX
+              <a href="tel:01943662713" className={styles.contactLink}>
+                01943 662713
               </a>
-              <a href="mailto:info@kearsleyco.co.uk" className={styles.contactLink}>
-                info@kearsleyco.co.uk
+              <a href="mailto:info@kearsleygs.co.uk" className={styles.contactLink}>
+                info@kearsleygs.co.uk
               </a>
             </div>
           </div>
@@ -34,7 +34,6 @@ export default function Footer() {
               <li><Link to="/plumbing">Plumbing Services</Link></li>
               <li><Link to="/gas-services">Gas Services</Link></li>
               <li><Link to="/air-conditioning">Air Conditioning</Link></li>
-              <li><Link to="/contact">Emergency Call-Out</Link></li>
             </ul>
           </div>
 
@@ -43,7 +42,6 @@ export default function Footer() {
             <h3 className={styles.colTitle}>Company</h3>
             <ul className={styles.colLinks}>
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/testimonials">Customer Reviews</Link></li>
               <li><Link to="/contact">Free Quote</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
             </ul>
@@ -57,10 +55,7 @@ export default function Footer() {
               <p>West Yorkshire, UK</p>
             </address>
             <div className={styles.hours}>
-              <p><strong>Mon – Fri:</strong> 7am – 7pm</p>
-              <p><strong>Saturday:</strong> 8am – 4pm</p>
-              <p><strong>Sunday:</strong> Closed</p>
-              <p className={styles.emergency}><strong>Emergency:</strong> 24/7</p>
+              <p><strong>Mon – Fri:</strong> 9am – 5pm</p>
             </div>
           </div>
         </div>
@@ -74,7 +69,18 @@ export default function Footer() {
           <p className={styles.copyright}>
             &copy; {year} Kearsley &amp; Co Gas Services. All rights reserved.
           </p>
-          <Link to="/privacy" className={styles.privacyLink}>Privacy Policy</Link>
+          <div className={styles.bottomRight}>
+            <Link to="/privacy" className={styles.privacyLink}>Privacy Policy</Link>
+            <a
+              href="https://www.marketing-handled.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.credit}
+            >
+              <span>Website by</span>
+              <img src="/images/marketinghandled.png" alt="Marketing Handled" className={styles.creditLogo} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

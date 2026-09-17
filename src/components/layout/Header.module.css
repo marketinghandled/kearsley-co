@@ -18,7 +18,7 @@
 .inner {
   display: flex;
   align-items: center;
-  height: 96px;
+  height: 108px;
   gap: 2rem;
 }
 
@@ -38,7 +38,7 @@
   margin-left: 0.25rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1157px) {
   .desktopNav {
     display: none;
   }
@@ -104,7 +104,7 @@
 
 @media (max-width: 480px) {
   .inner {
-    height: 68px;
+    height: 84px;
   }
 }
 
@@ -138,6 +138,8 @@
   cursor: pointer;
   padding: 0 11px;
   margin-left: auto;
+  position: relative;
+  z-index: 102;
   transition: background var(--transition);
 }
 
@@ -145,7 +147,7 @@
   background: var(--color-primary-light);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1157px) {
   .hamburger {
     display: flex;
   }
@@ -158,6 +160,18 @@
   border-radius: 1px;
   transition: all var(--transition);
   transform-origin: center;
+}
+
+.hamburgerOpen {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hamburgerOpen:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hamburgerOpen .bar {
+  background: #ffffff;
 }
 
 .hamburgerOpen .bar:nth-child(1) {
@@ -200,30 +214,9 @@
 .mobileMenuHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
-}
-
-.mobileMenuClose {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background: transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #ffffff;
-  transition: background var(--transition), border-color var(--transition);
-  flex-shrink: 0;
-}
-
-.mobileMenuClose:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .mobileMenuInner {

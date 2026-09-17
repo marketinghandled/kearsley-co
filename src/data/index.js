@@ -29,7 +29,7 @@ export const testimonials = [
     name: 'Gary Whitfield',
     location: 'Kirkstall',
     service: 'Gas',
-    quote: 'Emergency call-out at 9pm on a Sunday. They answered straight away, arrived within the hour, and had my heating back on before midnight. Exceptional service. These are the guys to call.',
+    quote: 'They came out at 9pm on a Sunday. Answered straight away, arrived within the hour, and had my heating back on before midnight. Exceptional service. These are the guys to call.',
     rating: 5,
   },
   {
@@ -85,11 +85,11 @@ export const testimonials = [
 // ===== PLUMBING SERVICES =====
 export const plumbingServices = [
   {
-    id: 'emergency-plumbing',
+    id: 'urgent-plumbing',
     icon: '🚨',
-    title: 'Emergency Plumbing',
-    description: 'Burst pipes, severe leaks, blocked drains — we offer 24/7 emergency plumbing call-outs across Leeds. Same-day attendance guaranteed.',
-    benefits: ['24/7 availability', 'Same-day response', 'No call-out charge', 'Fully insured'],
+    title: 'Urgent Plumbing Repairs',
+    description: 'Burst pipes, severe leaks, blocked drains — we offer prompt plumbing call-outs across Leeds. Same-day attendance available.',
+    benefits: ['Prompt call-outs', 'Same-day response', 'No call-out charge', 'Fully insured'],
     href: '/contact',
   },
   {
@@ -97,7 +97,7 @@ export const plumbingServices = [
     icon: '🔥',
     title: 'Boiler Installation',
     description: 'Approved suppliers of Worcester Bosch boiler packages. We also install Vaillant, Ideal and other leading brands. Full system flush and commissioning included.',
-    benefits: ['All major brands', 'Full commissioning', '12-month guarantee', 'Finance available'],
+    benefits: ['All major brands', 'Full commissioning', 'Aftercare support', 'Finance available'],
     href: '/contact',
   },
   {
@@ -109,27 +109,11 @@ export const plumbingServices = [
     href: '/contact',
   },
   {
-    id: 'leak-detection',
-    icon: '💧',
-    title: 'Leak Detection & Repair',
-    description: 'Using specialist equipment to locate hidden leaks in walls and floors without unnecessary damage. Fast diagnosis and repair.',
-    benefits: ['Specialist equipment', 'Minimal disruption', 'Accurate diagnosis', 'Fast repair'],
-    href: '/contact',
-  },
-  {
     id: 'central-heating',
     icon: '♨️',
     title: 'Central Heating',
     description: 'Radiator installation, powerflush, system upgrades, thermostatic controls and full central heating installations for domestic properties, commercial premises and industrial sites.',
     benefits: ['Full system design', 'Energy efficiency', 'Smart controls', 'System balancing'],
-    href: '/contact',
-  },
-  {
-    id: 'drainage',
-    icon: '🔩',
-    title: 'Drainage & Waste',
-    description: 'Blocked drains, sewer issues, CCTV drain surveys, and installation of new waste systems for domestic, commercial and industrial premises.',
-    benefits: ['CCTV surveys available', 'High-pressure jetting', 'All drain sizes', 'Odour investigations'],
     href: '/contact',
   },
 ]
@@ -153,11 +137,11 @@ export const gasServices = [
     href: '/contact',
   },
   {
-    id: 'gas-emergency',
+    id: 'gas-leak-response',
     icon: '⚠️',
-    title: 'Gas Leak Emergency',
-    description: 'Suspected gas leak? Our Gas Safe engineers provide 24/7 emergency response across Leeds. We\'ll make your home safe and carry out any necessary repairs.',
-    benefits: ['24/7 emergency response', 'Gas Safe registered', 'Immediate attendance', 'Full safety report'],
+    title: 'Gas Leak Response',
+    description: 'Suspected gas leak? Our Gas Safe engineers respond quickly across Leeds. We\'ll make your home safe and carry out any necessary repairs.',
+    benefits: ['Rapid response', 'Gas Safe registered', 'Immediate attendance', 'Full safety report'],
     href: '/contact',
   },
   {
@@ -290,7 +274,7 @@ export const gasFAQs = [
   },
   {
     question: 'What should I do if I smell gas?',
-    answer: 'If you smell gas, leave the property immediately without using any electrical switches. Do not use naked flames. Call the National Gas Emergency Service on 0800 111 999 (free, 24/7). Once safe, call us and we\'ll come out to check everything is safe before you return.',
+    answer: 'If you smell gas, leave the property immediately without using any electrical switches. Do not use naked flames. Call the National Gas Emergency Service on 0800 111 999 (free). Once safe, call us and we\'ll come out to check everything is safe before you return.',
   },
   {
     question: 'Can you fix any brand of boiler?',

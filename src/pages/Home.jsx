@@ -15,11 +15,13 @@ import Button from '../components/ui/Button'
 import { testimonials } from '../data/index'
 import styles from './Home.module.css'
 
+const SHOW_TESTIMONIALS = false
+
 const quickSchema = z.object({
   name: z.string().min(2, 'Please enter your name'),
   phone: z.string().regex(/^(\+44|0)[0-9]{9,10}$/, 'Please enter a valid UK phone number'),
   email: z.string().email('Please enter a valid email address'),
-  service: z.enum(['Plumbing', 'Gas Services', 'Air Conditioning', 'Emergency', 'Other'], {
+  service: z.enum(['Plumbing', 'Gas Services', 'Air Conditioning', 'Other'], {
     required_error: 'Please select a service',
   }),
   message: z.string().min(10, 'Please provide a brief description (at least 10 characters)'),
@@ -29,23 +31,24 @@ const serviceCards = [
   {
     title: 'Plumbing Services',
     description:
-      'Domestic, commercial and industrial plumbing — from emergency repairs to full installations across Leeds.',
+      'Domestic, commercial and industrial plumbing — from repairs to full installations across Leeds.',
     href: '/plumbing',
-    image: '/images/stock/view-exposed-plumbing-pipes.jpg',
+    image: '/images/pipes1.jpg',
   },
   {
     title: 'Gas Services',
     description:
       'Boiler servicing, gas safety certificates, and installations for homes, businesses and industrial premises — from Gas Safe registered engineers.',
     href: '/gas-services',
-    image: '/images/stock/boiler.webp',
+    image: '/images/boiler-best1.jpg',
+    imagePosition: 'center 85%',
   },
   {
     title: 'Air Conditioning',
     description:
       'Supply, installation and servicing of domestic, commercial and industrial AC systems across Leeds.',
     href: '/air-conditioning',
-    image: '/images/stock/air-conditioner-mounted-white-wall.jpg',
+    image: '/images/stock/air-con-lounge.jpg',
   },
 ]
 
@@ -53,12 +56,12 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Kearsley & Co Gas Services',
-  image: 'https://www.kearsleyco.co.uk/favicon.svg',
+  image: 'https://www.kearsleygs.co.uk/favicon.svg',
   description:
     'Gas Safe registered plumbers and gas engineers in Yeadon, Leeds. Domestic, commercial and industrial — Worcester Bosch boiler packages, gas servicing, air conditioning. Fast response, no call-out charges.',
-  url: 'https://www.kearsleyco.co.uk',
-  telephone: '01130000000',
-  email: 'info@kearsleyco.co.uk',
+  url: 'https://www.kearsleygs.co.uk',
+  telephone: '01943662713',
+  email: 'info@kearsleygs.co.uk',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Yeadon',
@@ -75,14 +78,8 @@ const localBusinessSchema = {
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '19:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '08:00',
-      closes: '16:00',
+      opens: '09:00',
+      closes: '17:00',
     },
   ],
   priceRange: '££',
@@ -113,19 +110,24 @@ const formRef = useRef(null)
   return (
     <>
       <Helmet>
-        <title>Kearsley &amp; Co Gas Services | Gas, Plumbing &amp; Gas Engineer in Yeadon, Leeds</title>
+        <title>Kearsley &amp; Co Gas Services | Plumber, Gas &amp; Air Conditioning Engineer in Yeadon, Leeds</title>
         <meta
           name="description"
           content="Gas Safe registered plumbers and gas engineers in Yeadon, Leeds. Domestic, commercial and industrial — Worcester Bosch boiler packages, gas servicing, air conditioning. Fast response, no call-out charges. Serving Yeadon, Guiseley, Rawdon, Horsforth and across Leeds."
         />
-        <meta property="og:title" content="Kearsley & Co Gas Services | Plumber & Gas Engineer in Yeadon, Leeds" />
+        <meta property="og:title" content="Kearsley & Co Gas Services | Plumber, Gas & Air Conditioning Engineer in Yeadon, Leeds" />
         <meta
           property="og:description"
           content="Gas Safe registered plumbers and gas engineers in Yeadon, Leeds. Worcester Bosch boiler packages, gas servicing, air conditioning. Fast response, no call-out charges."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.kearsleyco.co.uk" />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk" />
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
         </script>
@@ -154,16 +156,12 @@ const formRef = useRef(null)
           </p>
           <div className={styles.heroCTA}>
             <Button to="/contact" variant="primary">Get a Free Quote</Button>
-            <Button to="tel:01130000000" variant="secondaryLight">Call Us</Button>
+            <Button to="tel:01943662713" variant="secondaryLight">Call Us</Button>
           </div>
-          <ul className={styles.heroTrust} aria-label="Key guarantees">
+          <ul className={styles.heroTrust} aria-label="Key trust points">
             <li className={styles.heroTrustItem}>
               <span className={styles.heroTrustIcon} aria-hidden="true">✓</span>
               Gas Safe Registered
-            </li>
-            <li className={styles.heroTrustItem}>
-              <span className={styles.heroTrustIcon} aria-hidden="true">✓</span>
-              Emergency call outs
             </li>
             <li className={styles.heroTrustItem}>
               <span className={styles.heroTrustIcon} aria-hidden="true">✓</span>
@@ -175,13 +173,13 @@ const formRef = useRef(null)
         {/* Right: mosaic — one image per service (air con, boiler, plumbing) */}
         <div className={styles.heroImageGrid} aria-hidden="true">
           <div className={styles.heroImageCell}>
+            <img src="/images/boiler-best1.jpg" alt="" />
+          </div>
+          <div className={styles.heroImageCell}>
+            <img src="/images/boiler-install1.jpg" alt="" />
+          </div>
+          <div className={styles.heroImageCell}>
             <img src="/images/stock/air-con-lounge.jpg" alt="" />
-          </div>
-          <div className={styles.heroImageCell}>
-            <img src="/images/stock/boiler.jpg" alt="" />
-          </div>
-          <div className={styles.heroImageCell}>
-            <img src="/images/stock/pipework.jpg" alt="" />
           </div>
         </div>
       </section>
@@ -260,7 +258,7 @@ const formRef = useRef(null)
               
               <div className={styles.areasCTA}>
                 <Button to="/contact" variant="primary">Get a Free Quote</Button>
-                <Button to="tel:01130000000" variant="secondary">Call Us</Button>
+                <Button to="tel:01943662713" variant="secondary">Call Us</Button>
               </div>
             </div>
             <div className={styles.areasMap}>
@@ -283,22 +281,23 @@ const formRef = useRef(null)
       <WhyUs />
 
 
-      {/* TESTIMONIALS */}
-      <section
-        className={`section-pad ${styles.testimonials}`}
-        aria-label="Customer testimonials"
-      >
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>What Our Customers Say</h2>
-            <p className={styles.sectionSub}>
-              Real reviews from customers across Horsforth and Leeds.
-            </p>
+      {/* TESTIMONIALS — hidden for now, not ready to show yet */}
+      {SHOW_TESTIMONIALS && (
+        <section
+          className={`section-pad ${styles.testimonials}`}
+          aria-label="Customer testimonials"
+        >
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionHeading}>What Our Customers Say</h2>
+              <p className={styles.sectionSub}>
+                Real reviews from customers across Horsforth and Leeds.
+              </p>
+            </div>
+            <TestimonialsCarousel testimonials={testimonials} />
           </div>
-          <TestimonialsCarousel testimonials={testimonials} />
-         
-        </div>
-      </section>
+        </section>
+      )}
 
 
       {/* CTA BANNER */}
@@ -306,7 +305,7 @@ const formRef = useRef(null)
         heading="Need a Gas Engineer in Yeadon or Leeds?"
         subtext="Domestic, commercial and industrial work — call us now or send an enquiry for a same day response across Yeadon, Guiseley, Rawdon, Horsforth and all of Leeds."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
 
@@ -334,7 +333,7 @@ const formRef = useRef(null)
                 role="alert"
               >
                 <div className={styles.successMark} aria-hidden="true">✓</div>
-                <h3>Thank you! We'll be in touch within 2 hours.</h3>
+                <h3>Thank you! We'll be in touch soon.</h3>
                 <p>We've received your enquiry and will call or email you shortly.</p>
               </motion.div>
             ) : (
@@ -393,7 +392,6 @@ const formRef = useRef(null)
                       <option>Plumbing</option>
                       <option>Gas Services</option>
                       <option>Air Conditioning</option>
-                      <option>Emergency</option>
                       <option>Other</option>
                     </select>
                     {errors.service && <span className={styles.error} role="alert">{errors.service.message}</span>}

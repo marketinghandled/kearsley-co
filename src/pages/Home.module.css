@@ -147,11 +147,12 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (max-aspect-ratio: 4/3) {
   .hero {
     grid-template-columns: 1fr;
     height: auto;
-    grid-template-rows: clamp(180px, 40vw, 400px) auto;
+    max-height: none;
+    grid-template-rows: clamp(220px, min(70vw, 45vh), 460px) auto;
     overflow: hidden;
   }
 
@@ -159,11 +160,15 @@
     order: -1;
     overflow: hidden;
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .heroImageCell:first-child {
     grid-row: auto;
+  }
+
+  .heroImageCell:last-child {
+    display: none;
   }
 
   .heroContent {
@@ -217,11 +222,11 @@
   .hero {
     margin-top: 68px;
     height: auto;
-    grid-template-rows: clamp(160px, 38vw, 280px) auto;
+    grid-template-rows: clamp(200px, min(65vw, 40vh), 380px) auto;
   }
 
   .heroContent {
-    padding: 1.5rem 1.25rem calc(0.75rem + 56px);
+    padding: 1.5rem 1.25rem 1.75rem;
     justify-content: flex-start;
   }
 
@@ -260,23 +265,28 @@
   }
 }
 
-@media (max-width: 480px) and (max-height: 700px) {
+@media (max-width: 1024px) and (max-height: 700px) and (max-aspect-ratio: 4/3) {
   .hero {
-    grid-template-rows: 28vh 1fr;
+    grid-template-rows: min(26vh, 220px) auto;
+  }
+
+  .heroContent {
+    padding-top: clamp(0.75rem, 2.5vh, 1.5rem);
+    padding-bottom: clamp(0.75rem, 2.5vh, 1.5rem);
   }
 
   .heroHeading {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.4rem, 4.5vh, 2.25rem);
+    margin-bottom: clamp(0.35rem, 1vh, 0.5rem);
   }
 
   .heroSub {
-    font-size: 0.8rem;
-    margin-bottom: 0.75rem;
+    font-size: clamp(0.8rem, 2vh, 0.95rem);
+    margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);
   }
 
   .heroTag {
-    margin-bottom: 0.5rem;
+    margin-bottom: clamp(0.35rem, 1vh, 0.5rem);
   }
 }
 
@@ -363,7 +373,7 @@
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  gap: 2.25rem;
 }
 
 @media (max-width: 900px) {
@@ -423,6 +433,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .areasMap {

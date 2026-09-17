@@ -39,7 +39,15 @@ export default function Testimonials() {
           name="description"
           content="Read reviews from our satisfied customers across Horsforth and Leeds. 5-star rated plumbers and gas engineers."
         />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/testimonials" />
+        <meta property="og:title" content="Customer Reviews | Kearsley & Co Gas Services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/testimonials" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/testimonials" />
       </Helmet>
 
       {/* HERO */}
@@ -64,7 +72,7 @@ export default function Testimonials() {
             </p>
             <div className={styles.heroCTA}>
               <Button to="/contact" variant="primary">Get a Free Quote</Button>
-              <Button href="tel:01130000000" variant="secondaryLight">Call 0113 XXX XXXX</Button>
+              <Button href="tel:01943662713" variant="secondaryLight">Call 01943 662713</Button>
             </div>
           </motion.div>
         </div>
@@ -141,7 +149,7 @@ export default function Testimonials() {
         heading="Join Our Satisfied Customers"
         subtext="Get in touch today for a free, no-obligation quote on any plumbing, gas or AC work."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </div>

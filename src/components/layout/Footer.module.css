@@ -128,14 +128,6 @@
   color: rgba(255,255,255,0.82);
 }
 
-.emergency {
-  color: var(--color-accent) !important;
-}
-
-.emergency strong {
-  color: var(--color-accent) !important;
-}
-
 /* Bottom */
 .bottom {
   display: flex;
@@ -173,4 +165,29 @@
 
 .privacyLink:hover {
   color: var(--color-accent);
+}
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.credit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.credit:hover {
+  color: var(--color-accent);
+}
+
+.creditLogo {
+  height: 32px;
+  width: auto;
 }

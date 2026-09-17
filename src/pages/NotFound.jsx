@@ -57,8 +57,8 @@ export default function NotFound() {
 
             <div className={styles.quickContact}>
               <span>Need help urgently?</span>
-              <a href="tel:01130000000" className={styles.phone}>
-                0113 XXX XXXX
+              <a href="tel:01943662713" className={styles.phone}>
+                01943 662713
               </a>
             </div>
           </motion.div>

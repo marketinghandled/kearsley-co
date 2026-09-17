@@ -12,7 +12,6 @@ const navLinks = [
   { label: 'Plumbing', to: '/plumbing' },
   { label: 'Gas Services', to: '/gas-services' },
   { label: 'Air Conditioning', to: '/air-conditioning' },
-  { label: 'Reviews', to: '/testimonials' },
   { label: 'Contact', to: '/contact' },
 ]
 
@@ -50,7 +49,7 @@ export default function Header() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link to="/" className={styles.logo} aria-label="Kearsley & Co Gas Services — Home">
-          <LogoMark size={68} />
+          <LogoMark size={80} />
         </Link>
 
         {/* Desktop Nav */}
@@ -64,8 +63,8 @@ export default function Header() {
 
         {/* CTA */}
         <div className={styles.cta}>
-          <a href="tel:01130000000" className={styles.phoneLink} aria-label="Call us on 0113 XXX XXXX">
-            0113 XXX XXXX
+          <a href="tel:01943662713" className={styles.phoneLink} aria-label="Call us on 01943 662713">
+            01943 662713
           </a>
           <Button to="/contact" variant="primary">
             Get a Free Quote
@@ -114,15 +113,6 @@ export default function Header() {
                 <Link to="/" className={styles.logo} onClick={closeMenu} aria-label="Kearsley & Co Gas Services — Home">
                   <LogoMark size={72} light />
                 </Link>
-                <button
-                  className={styles.mobileMenuClose}
-                  onClick={closeMenu}
-                  aria-label="Close menu"
-                >
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-                  </svg>
-                </button>
               </div>
               <div className={styles.mobileMenuInner}>
                 {navLinks.map((link, i) => (

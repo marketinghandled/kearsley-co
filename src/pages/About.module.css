@@ -169,7 +169,7 @@
 .gasSafeImgWrap {
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/5;
 }
 
 .gasSafeImgWrap img {
@@ -298,6 +298,19 @@
 
 .brandLogoWrap:hover .brandLogo {
   filter: grayscale(0%);
+}
+
+@media (max-width: 768px) {
+  .brandsGrid {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: 1rem;
+  }
+
+  .brandLogoWrap {
+    height: 5rem;
+    padding: 1rem 1.25rem;
+  }
 }
 
 /* TEAM */

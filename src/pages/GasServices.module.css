@@ -109,7 +109,7 @@
   border-color: var(--color-white);
 }
 
-/* TRUST ROW — Gas Safe + Emergency side by side */
+/* TRUST ROW — Gas Safe */
 .trustRow {
   padding: 2.5rem 0;
   background: var(--color-white);
@@ -117,15 +117,13 @@
 
 .trustPair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
-@media (max-width: 720px) {
-  .trustPair {
-    grid-template-columns: 1fr;
-  }
+.trustPair .gasSafeBox {
+  max-width: 640px;
+  width: 100%;
 }
 
 /* GAS SAFE CARD */
@@ -276,6 +274,12 @@
 .emergencyFree {
   font-size: 0.8125rem;
   color: rgba(255,255,255,0.65);
+}
+
+/* GALLERY */
+.gallerySection {
+  padding: clamp(3rem, 6vw, 4.5rem) 0 0;
+  background: var(--color-white);
 }
 
 /* SERVICES */

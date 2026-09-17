@@ -18,9 +18,9 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Job Done, Guaranteed',
+    title: 'Job Done Right',
     description:
-      'We carry out the work to the highest standard, clean up completely, and back everything with our 12-month guarantee.',
+      'We carry out the work to the highest standard and clean up completely before we leave.',
   },
 ]
 

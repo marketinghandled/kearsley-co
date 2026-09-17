@@ -5,10 +5,10 @@ import { motion, useInView } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import ServiceCard from '../components/ui/ServiceCard'
 import FAQAccordion from '../components/ui/FAQAccordion'
-import TestimonialsCarousel from '../components/ui/TestimonialsCarousel'
 import CTABanner from '../components/ui/CTABanner'
 import Button from '../components/ui/Button'
-import { acServices, acFAQs, testimonials } from '../data/index'
+import WorkGallery from '../components/ui/WorkGallery'
+import { acServices, acFAQs } from '../data/index'
 import styles from './AirConditioning.module.css'
 
 const brands = [
@@ -16,6 +16,13 @@ const brands = [
   { name: 'Samsung', logo: '/images/samsunglogotransparent.png' },
   { name: 'LG', logo: '/images/lglogotrans.png' },
   { name: 'Hitachi', logo: '/images/hitachi-2-logo-png-transparent.png' },
+]
+
+const galleryImages = [
+  { src: '/images/stock/Air-con.jpeg', alt: 'Air conditioning unit installed by Kearsley & Co', caption: 'Split system installs' },
+  { src: '/images/stock/air-conditioning-unit.webp', alt: 'Wall-mounted air conditioning unit', caption: 'Wall-mounted units' },
+  { src: '/images/stock/air-conditioner-mounted-white-wall.jpg', alt: 'Air conditioning unit mounted on a white wall', caption: 'Clean, tidy finish' },
+  { src: '/images/stock/air-con-lounge.jpg', alt: 'Air conditioning unit in a lounge', caption: 'Residential comfort' },
 ]
 
 export default function AirConditioning() {
@@ -32,7 +39,14 @@ export default function AirConditioning() {
           content="Professional air conditioning installation, servicing and maintenance in Yeadon and Leeds. Worcester Bosch, Samsung, LG, Hitachi installers. Residential and commercial AC across Yeadon, Guiseley, Rawdon, Horsforth and Leeds."
         />
         <meta property="og:title" content="Air Conditioning Yeadon & Leeds | Worcester Bosch, Samsung, LG, Hitachi | Kearsley & Co" />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/air-conditioning" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/air-conditioning" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/air-conditioning" />
       </Helmet>
 
       {/* HERO */}
@@ -59,7 +73,7 @@ export default function AirConditioning() {
             </p>
             <div className={styles.heroCTA}>
               <Button to="/contact" variant="primary">Book a Free Survey</Button>
-              <Button href="tel:01130000000" variant="secondaryLight">Call 0113 XXX XXXX</Button>
+              <Button href="tel:01943662713" variant="secondaryLight">Call 01943 662713</Button>
             </div>
           </motion.div>
         </div>
@@ -92,18 +106,12 @@ export default function AirConditioning() {
         </div>
       </section>
 
-      {/* PHOTO STRIP */}
-      <div className={styles.photoStrip} aria-hidden="true">
-        <div className={styles.photoStripCell}>
-          <img src="/images/stock/Air-con.jpeg" alt="" />
+      {/* WORK GALLERY */}
+      <section className={styles.gallerySection} aria-label="Examples of our air conditioning work">
+        <div className="container">
+          <WorkGallery images={galleryImages} aspect="3 / 2" />
         </div>
-        <div className={styles.photoStripCell}>
-          <img src="/images/stock/air-conditioning-unit.webp" alt="" />
-        </div>
-        <div className={styles.photoStripCell}>
-          <img src="/images/stock/air-conditioner-mounted-white-wall.jpg" alt="" />
-        </div>
-      </div>
+      </section>
 
       {/* AC SERVICES */}
       <section
@@ -173,22 +181,12 @@ export default function AirConditioning() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className={styles.testimonialsSection} aria-label="AC customer reviews">
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>What Our AC Customers Say</h2>
-          </div>
-          <TestimonialsCarousel testimonials={testimonials} filter="Air Conditioning" />
-        </div>
-      </section>
-
       {/* CTA */}
       <CTABanner
         heading="Ready to Install Air Conditioning in Yeadon or Leeds?"
         subtext="Domestic, commercial and industrial AC — book a free, no-obligation site survey and get a fixed price for your Worcester Bosch, Samsung, LG or Hitachi installation."
         primaryCTA={{ label: 'Book a Free Survey', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </>

@@ -10,7 +10,7 @@ export default function Privacy() {
           name="description"
           content="Privacy policy for Kearsley & Co Gas Services. How we collect, use, and protect your personal data."
         />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/privacy" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/privacy" />
         <meta name="robots" content="noindex" />
       </Helmet>
 
@@ -31,8 +31,8 @@ export default function Privacy() {
               plumbing company based in Horsforth, Leeds, West Yorkshire, LS18. We are the
               data controller for the personal information we collect. If you have questions
               about this policy or your personal data, contact us at{' '}
-              <a href="mailto:info@kearsleyco.co.uk">info@kearsleyco.co.uk</a> or call{' '}
-              <a href="tel:01130000000">0113 XXX XXXX</a>.
+              <a href="mailto:info@kearsleygs.co.uk">info@kearsleygs.co.uk</a> or call{' '}
+              <a href="tel:01943662713">01943 662713</a>.
             </p>
 
             <h2>2. What Data We Collect</h2>
@@ -156,7 +156,7 @@ export default function Privacy() {
             </ul>
             <p>
               To exercise any of these rights, contact us at{' '}
-              <a href="mailto:info@kearsleyco.co.uk">info@kearsleyco.co.uk</a>. We will
+              <a href="mailto:info@kearsleygs.co.uk">info@kearsleygs.co.uk</a>. We will
               respond within 30 days.
             </p>
             <p>
@@ -195,8 +195,8 @@ export default function Privacy() {
             <address className={styles.addressBlock}>
               <strong>Kearsley &amp; Co Gas Services</strong><br />
               Horsforth, Leeds, LS18<br />
-              Email: <a href="mailto:info@kearsleyco.co.uk">info@kearsleyco.co.uk</a><br />
-              Phone: <a href="tel:01130000000">0113 XXX XXXX</a>
+              Email: <a href="mailto:info@kearsleygs.co.uk">info@kearsleygs.co.uk</a><br />
+              Phone: <a href="tel:01943662713">01943 662713</a>
             </address>
 
           </div>

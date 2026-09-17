@@ -14,7 +14,7 @@ const schema = z.object({
     .string()
     .regex(/^(\+44|0)[0-9]{9,10}$/, 'Please enter a valid UK phone number'),
   email: z.string().email('Please enter a valid email address'),
-  service: z.enum(['Plumbing', 'Gas Services', 'Air Conditioning', 'Emergency', 'Other'], {
+  service: z.enum(['Plumbing', 'Gas Services', 'Air Conditioning', 'Other'], {
     required_error: 'Please select a service',
   }),
   message: z
@@ -27,8 +27,8 @@ const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Kearsley & Co Gas Services',
-  telephone: '01130000000',
-  email: 'info@kearsleyco.co.uk',
+  telephone: '01943662713',
+  email: 'info@kearsleygs.co.uk',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Yeadon',
@@ -38,7 +38,7 @@ const contactSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '01130000000',
+    telephone: '01943662713',
     contactType: 'customer service',
     availableLanguage: 'English',
     areaServed: 'Leeds',
@@ -46,15 +46,15 @@ const contactSchema = {
 }
 
 const hours = [
-  { day: 'Monday – Friday', time: '7:00am – 7:00pm' },
-  { day: 'Saturday', time: '8:00am – 4:00pm' },
-  { day: 'Sunday', time: 'Closed' },
-  { day: 'Emergency', time: '24/7' },
+  { day: 'Monday – Friday', time: '9:00am – 5:00pm' },
 ]
+
+const WEB3FORMS_ACCESS_KEY = '9ca24597-67e7-47d4-8fdd-8ff3b208e59e'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [submittedName, setSubmittedName] = useState('')
+  const [submitError, setSubmitError] = useState(false)
   const reduced = useReducedMotion()
 
   const {
@@ -65,10 +65,35 @@ export default function Contact() {
   } = useForm({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data) => {
-    await new Promise((r) => setTimeout(r, 700))
-    setSubmittedName(data.name)
-    setSubmitted(true)
-    reset()
+    setSubmitError(false)
+    try {
+      const formData = new FormData()
+      formData.append('access_key', WEB3FORMS_ACCESS_KEY)
+      formData.append('subject', `New enquiry from ${data.name} — ${data.service}`)
+      formData.append('from_name', data.name)
+      formData.append('name', data.name)
+      formData.append('phone', data.phone)
+      formData.append('email', data.email)
+      formData.append('service', data.service)
+      formData.append('message', data.message)
+      formData.append('hear_about_us', data.hearAboutUs || 'Not provided')
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      const result = await res.json()
+
+      if (result.success) {
+        setSubmittedName(data.name)
+        setSubmitted(true)
+        reset()
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    }
   }
 
   return (
@@ -77,9 +102,17 @@ export default function Contact() {
         <title>Contact Us | Kearsley &amp; Co Gas Services — Yeadon, Leeds</title>
         <meta
           name="description"
-          content="Contact Kearsley & Co Gas Services for a free quote on plumbing, gas, or air conditioning in Yeadon and Leeds. Call 0113 XXX XXXX or send a message."
+          content="Contact Kearsley & Co Gas Services for a free quote on plumbing, gas, or air conditioning in Yeadon and Leeds. Call 01943 662713 or send a message."
         />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/contact" />
+        <meta property="og:title" content="Contact Us | Kearsley & Co Gas Services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/contact" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/contact" />
         <script type="application/ld+json">{JSON.stringify(contactSchema)}</script>
       </Helmet>
 
@@ -100,7 +133,7 @@ export default function Contact() {
           >
             <h1 className={styles.heroHeading}>Get in Touch</h1>
             <p className={styles.heroSub}>
-              Call us now or fill in the form — we'll get back to you within 2 hours.
+              Call us now or fill in the form and we'll get back to you.
             </p>
           </motion.div>
         </div>
@@ -150,8 +183,8 @@ export default function Contact() {
                     Thank you, {submittedName}!
                   </h3>
                   <p className={styles.successText}>
-                    We'll be in touch within 2 hours. For urgent enquiries call us directly on{' '}
-                    <a href="tel:01130000000">0113 XXX XXXX</a>.
+                    We'll be in touch soon. For urgent enquiries call us directly on{' '}
+                    <a href="tel:01943662713">01943 662713</a>.
                   </p>
                   <button
                     className={styles.resetBtn}
@@ -166,6 +199,23 @@ export default function Contact() {
                   className={styles.form}
                   noValidate
                 >
+                  {/* Honeypot — hidden from real visitors, catches bots */}
+                  <input
+                    type="checkbox"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    style={{ display: 'none' }}
+                    aria-hidden="true"
+                    {...register('botcheck')}
+                  />
+
+                  {submitError && (
+                    <p className={styles.error} role="alert" style={{ marginBottom: '1rem' }}>
+                      Something went wrong sending your message. Please try again, or call us
+                      directly on <a href="tel:01943662713">01943 662713</a>.
+                    </p>
+                  )}
+
                   {/* Name + Phone */}
                   <div className={styles.formRow}>
                     <div className={styles.formGroup}>
@@ -240,7 +290,6 @@ export default function Contact() {
                         <option>Plumbing</option>
                         <option>Gas Services</option>
                         <option>Air Conditioning</option>
-                        <option>Emergency</option>
                         <option>Other</option>
                       </select>
                       {errors.service && (
@@ -291,10 +340,9 @@ export default function Contact() {
                   
                   <div className={styles.infoContent}>
                     <strong>Phone</strong>
-                    <a href="tel:01130000000" className={styles.infoValue}>
-                      0113 XXX XXXX
+                    <a href="tel:01943662713" className={styles.infoValue}>
+                      01943 662713
                     </a>
-                    <span className={styles.infoNote}>For emergencies call anytime — 24/7</span>
                   </div>
                 </div>
 
@@ -303,10 +351,10 @@ export default function Contact() {
                   
                   <div className={styles.infoContent}>
                     <strong>Email</strong>
-                    <a href="mailto:info@kearsleyco.co.uk" className={styles.infoValue}>
-                      info@kearsleyco.co.uk
+                    <a href="mailto:info@kearsleygs.co.uk" className={styles.infoValue}>
+                      info@kearsleygs.co.uk
                     </a>
-                    <span className={styles.infoNote}>We reply within 2 hours during business hours</span>
+                    <span className={styles.infoNote}>We reply during business hours</span>
                   </div>
                 </div>
 
@@ -330,7 +378,7 @@ export default function Contact() {
                 <table className={styles.hoursTable}>
                   <tbody>
                     {hours.map((row) => (
-                      <tr key={row.day} className={row.day === 'Emergency' ? styles.emergencyRow : ''}>
+                      <tr key={row.day}>
                         <td className={styles.dayCell}>{row.day}</td>
                         <td className={styles.timeCell}>{row.time}</td>
                       </tr>
@@ -352,19 +400,6 @@ export default function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </div>
-
-              {/* Emergency box */}
-              <div className={styles.emergencyBox}>
-                <span aria-hidden="true">⚠️</span>
-                <div>
-                  <strong>Gas Emergency?</strong>
-                  <p>
-                    Call National Gas Emergency on{' '}
-                    <a href="tel:0800111999">0800 111 999</a> first,
-                    then call us on <a href="tel:01130000000">0113 XXX XXXX</a>.
-                  </p>
-                </div>
               </div>
             </div>
           </div>

@@ -9,7 +9,6 @@ const points = [
   '20+ years of experience',
   'Domestic, commercial and industrial work',
   'Honest, transparent pricing',
-  'Emergency call outs across Yeadon and Leeds',
   'Fully insured - public liability and employers\' liability',
 ]
 
@@ -25,7 +24,7 @@ export default function WhyUs() {
       ref={ref}
     >
       <div className={`container ${styles.inner}`}>
-        {/* Left: image placeholder */}
+        {/* Left: image */}
         <motion.div
           className={styles.imageCol}
           initial={reduced ? false : { opacity: 0, x: -30 }}
@@ -33,7 +32,10 @@ export default function WhyUs() {
           transition={{ duration: 0.5 }}
         >
           <div className={styles.imgPlaceholder}>
-            <span className={styles.imgPlaceholderLabel}>Image of engineer installing</span>
+            <img
+              src="/images/boiler1.jpg"
+              alt="Kearsley & Co engineer installing a Worcester Bosch boiler"
+            />
           </div>
           <div className={styles.statsRow}>
             <div className={styles.stat}>
@@ -41,7 +43,7 @@ export default function WhyUs() {
               <span className={styles.statLabel}>Years experience</span>
             </div>
             <div className={styles.statDivider} />
-            <div className={styles.stat}>
+            <div className={`${styles.stat} ${styles.statMiddle}`}>
               <span className={styles.statNumber}>£</span>
               <span className={styles.statLabel}>Honest pricing</span>
             </div>

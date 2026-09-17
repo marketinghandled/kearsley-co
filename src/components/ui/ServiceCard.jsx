@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import styles from './ServiceCard.module.css'
 
-export default function ServiceCard({ title, description, benefits, href, image }) {
+export default function ServiceCard({ title, description, benefits, href, image, imagePosition }) {
   const reduced = useReducedMotion()
   const isExternal = href && href.startsWith('http')
 
@@ -25,9 +25,16 @@ export default function ServiceCard({ title, description, benefits, href, image 
       transition={{ duration: 0.2 }}
     >
       <CardWrapper>
-        <div className={styles.cardImage} aria-hidden="true">
-          {image && <img src={image} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-        </div>
+        {image && (
+          <div className={styles.cardImage} aria-hidden="true">
+            <img
+              src={image}
+              alt=""
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: imagePosition || 'center' }}
+            />
+          </div>
+        )}
         <div className={styles.cardBody}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>{description}</p>

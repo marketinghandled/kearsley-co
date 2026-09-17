@@ -15,6 +15,8 @@ const brandLogos = [
   { src: '/images/hitachi-2-logo-png-transparent.png', alt: 'Hitachi' },
 ]
 
+const SHOW_TEAM = false
+
 const team = [
   {
     initials: 'JK',
@@ -30,7 +32,7 @@ const team = [
     name: 'Mike Thompson',
     role: 'Senior Plumber',
     bio:
-      'Fully qualified plumber specialising in bathroom installations and emergency call-outs. Mike is known for his careful, tidy work and ability to solve complex plumbing problems that others have failed to fix.',
+      'Fully qualified plumber specialising in bathroom installations and plumbing repairs. Mike is known for his careful, tidy work and ability to solve complex plumbing problems that others have failed to fix.',
   },
 ]
 
@@ -52,9 +54,17 @@ export default function About() {
         <title>About Us | Kearsley &amp; Co Gas Services — Yeadon, Leeds</title>
         <meta
           name="description"
-          content="Meet the team behind Kearsley & Co Gas Services. Local engineers with 20+ years experience based in Yeadon, serving Leeds and surrounding areas. Gas Safe registered, honest pricing, 12-month guarantee."
+          content="Meet the team behind Kearsley & Co Gas Services. Local engineers with 20+ years experience based in Yeadon, serving Leeds and surrounding areas. Gas Safe registered, honest pricing."
         />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/about" />
+        <meta property="og:title" content="About Us | Kearsley & Co Gas Services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/about" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/about" />
       </Helmet>
 
       {/* HERO */}
@@ -75,11 +85,11 @@ export default function About() {
           >
             <h1 className={styles.heroHeading}>About Kearsley &amp; Co Gas Services</h1>
             <p className={styles.heroSub}>
-              Local engineers. Honest pricing. Quality guaranteed.
+              Local engineers. Honest pricing. Quality work.
             </p>
             <div className={styles.heroCTA}>
               <Button to="/contact" variant="primary">Get a Free Quote</Button>
-              <Button href="tel:01130000000" variant="secondaryLight">Call 0113 XXX XXXX</Button>
+              <Button href="tel:01943662713" variant="secondaryLight">Call 01943 662713</Button>
             </div>
           </motion.div>
         </div>
@@ -94,9 +104,8 @@ export default function About() {
               <p>
                 We're a local company based in Yeadon, staffed by engineers with over 20 years
                 of experience who live and work in the communities we serve. We work across
-                domestic, commercial and industrial sectors — from home boilers to commercial gas
-                installations and industrial plant. When you call us, you're not calling a national
-                call centre — you're talking directly to the team who will carry out your work.
+                domestic, commercial and industrial sectors - from home boilers to commercial gas
+                installations.
               </p>
             </div>
           </div>
@@ -118,7 +127,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
             >
               <div className={styles.gasSafeImgWrap}>
-                <img src="/images/stock/boiler.jpg" alt="Gas Safe registered engineer" />
+                <img src="/images/boiler1.jpg" alt="Worcester Bosch boiler installed by Kearsley & Co" />
               </div>
               <motion.div className={styles.gasSafeBadge} style={reduced ? {} : { y: badgeY }}>
                 <img src="/images/logo-gassafe.svg" alt="Gas Safe Register" />
@@ -132,8 +141,8 @@ export default function About() {
             >
               <h2 className={styles.gasSafeHeading}>Gas Safe Registered Engineers</h2>
               <p className={styles.gasSafeIntro}>
-                Kearsley &amp; Co Gas Services takes gas safety seriously. We are on the Gas Safe
-                Register and carry their official identity card. Please ask to see it.
+                Kearsley &amp; Co Gas Services takes gas safety seriously. <br/> We are on the Gas Safe
+                Register and carry their official identity card.
               </p>
               <p className={styles.gasSafeBody}>
                 Gas Safe Register is the official gas safety organisation in Great Britain. It
@@ -181,50 +190,52 @@ export default function About() {
         </div>
       </section>
 
-      {/* TEAM */}
-      <section
-        className={styles.teamSection}
-        aria-label="Our team"
-        ref={teamRef}
-      >
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>Meet the Team</h2>
-            <p className={styles.sectionSub}>
-              The engineers behind Kearsley &amp; Co.
-            </p>
-          </div>
-          <div className={styles.teamGrid}>
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                className={styles.teamCard}
-                initial={reduced ? false : { opacity: 0, y: 24 }}
-                animate={teamInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: i * 0.12 }}
-              >
-                <div
-                  className={styles.avatar}
-                  style={{ background: member.bg }}
-                  aria-hidden="true"
+      {/* TEAM — hidden for now, not ready to show yet */}
+      {SHOW_TEAM && (
+        <section
+          className={styles.teamSection}
+          aria-label="Our team"
+          ref={teamRef}
+        >
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionHeading}>Meet the Team</h2>
+              <p className={styles.sectionSub}>
+                The engineers behind Kearsley &amp; Co.
+              </p>
+            </div>
+            <div className={styles.teamGrid}>
+              {team.map((member, i) => (
+                <motion.div
+                  key={member.name}
+                  className={styles.teamCard}
+                  initial={reduced ? false : { opacity: 0, y: 24 }}
+                  animate={teamInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.45, delay: i * 0.12 }}
                 >
-                  {member.initials}
-                </div>
-                <h3 className={styles.memberName}>{member.name}</h3>
-                <p className={styles.memberRole}>{member.role}</p>
-                <p className={styles.memberBio}>{member.bio}</p>
-              </motion.div>
-            ))}
+                  <div
+                    className={styles.avatar}
+                    style={{ background: member.bg }}
+                    aria-hidden="true"
+                  >
+                    {member.initials}
+                  </div>
+                  <h3 className={styles.memberName}>{member.name}</h3>
+                  <p className={styles.memberRole}>{member.role}</p>
+                  <p className={styles.memberBio}>{member.bio}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <CTABanner
         heading="Ready to Work With Us?"
         subtext="Get in touch today for a free, no-obligation quote. We'd love to help."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </>

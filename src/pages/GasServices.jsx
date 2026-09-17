@@ -5,11 +5,18 @@ import { motion, useInView } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import ServiceCard from '../components/ui/ServiceCard'
 import FAQAccordion from '../components/ui/FAQAccordion'
-import TestimonialsCarousel from '../components/ui/TestimonialsCarousel'
 import CTABanner from '../components/ui/CTABanner'
 import Button from '../components/ui/Button'
-import { gasServices, gasFAQs, testimonials } from '../data/index'
+import WorkGallery from '../components/ui/WorkGallery'
+import { gasServices, gasFAQs } from '../data/index'
 import styles from './GasServices.module.css'
+
+const galleryImages = [
+  { src: '/images/boiler-best1.jpg', alt: 'Worcester Bosch boiler installation by Kearsley & Co', caption: 'Boiler installations' },
+  { src: '/images/boiler-install1.jpg', alt: 'Gas engineer installing a boiler', caption: 'Expert fitting' },
+  { src: '/images/boiler1.jpg', alt: 'Completed boiler installation', caption: 'Finished to a high standard' },
+  { src: '/images/boiler&pipes.jpg', alt: 'Boiler pipework and system installation', caption: 'System pipework' },
+]
 
 const gasFaqSchema = {
   '@context': 'https://schema.org',
@@ -32,10 +39,17 @@ export default function GasServices() {
         <title>Gas Engineer Yeadon &amp; Leeds | Worcester Bosch Installer | Kearsley &amp; Co</title>
         <meta
           name="description"
-          content="Gas Safe registered engineers in Yeadon, Leeds. Worcester Bosch boiler packages, Vaillant installations, landlord gas safety certificates (CP12), 24/7 emergency call-outs. Serving Yeadon, Guiseley, Rawdon, Horsforth and across Leeds."
+          content="Gas Safe registered engineers in Yeadon, Leeds. Worcester Bosch boiler packages, Vaillant installations, landlord gas safety certificates (CP12). Serving Yeadon, Guiseley, Rawdon, Horsforth and across Leeds."
         />
         <meta property="og:title" content="Gas Engineer Yeadon & Leeds | Worcester Bosch Installer | Kearsley & Co" />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/gas-services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/gas-services" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/gas-services" />
         <script type="application/ld+json">{JSON.stringify(gasFaqSchema)}</script>
       </Helmet>
 
@@ -59,19 +73,19 @@ export default function GasServices() {
             </h1>
             <p className={styles.heroSub}>
               Fully accredited Gas Safe registered engineers covering domestic, commercial and industrial
-              gas work - boiler servicing, installations, and emergency call-outs.
+              gas work - boiler servicing and installations.
               Serving Yeadon and surrounding areas across Leeds.
             </p>
             <div className={styles.heroCTA}>
               <Button to="/contact" variant="primary">Get a Free Quote</Button>
-              <Button href="tel:01130000000" variant="secondaryLight">Call 0113 XXX XXXX</Button>
+              <Button href="tel:01943662713" variant="secondaryLight">Call 01943 662713</Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* GAS SAFE + EMERGENCY — side by side */}
-      <section className={styles.trustRow} aria-label="Gas Safe registration and emergency information">
+      {/* GAS SAFE */}
+      <section className={styles.trustRow} aria-label="Gas Safe registration">
         <div className="container">
           <div className={styles.trustPair}>
 
@@ -98,37 +112,6 @@ export default function GasServices() {
               </div>
             </div>
 
-            {/* Emergency card */}
-            <div className={styles.emergencyBox}>
-              <div className={styles.emergencyHeader}>
-                <span className={styles.warningIcon} aria-hidden="true">⚠️</span>
-                <h2 className={styles.emergencyHeading}>Smell Gas? Act Immediately.</h2>
-              </div>
-              <ol className={styles.emergencyList}>
-                <li>
-                  <span className={styles.stepNum}>1.</span>
-                  <span>Leave immediately - no light switches</span>
-                </li>
-                <li>
-                  <span className={styles.stepNum}>2.</span>
-                  <span>No electrical switches or naked flames</span>
-                </li>
-                <li>
-                  <span className={styles.stepNum}>3.</span>
-                  <span>
-                    Call <strong><a href="tel:0800111999" className={styles.emergencyNum}>0800 111 999</a></strong> (free, 24/7)
-                  </span>
-                </li>
-                <li>
-                  <span className={styles.stepNum}>4.</span>
-                  <span>
-                    Then call us on{' '}
-                    <a href="tel:01130000000" className={styles.emergencyNum}>0113 XXX XXXX</a>
-                  </span>
-                </li>
-              </ol>
-            </div>
-
           </div>
         </div>
       </section>
@@ -148,6 +131,13 @@ export default function GasServices() {
               <img key={logo.alt} src={logo.src} alt={logo.alt} style={{ height: 40, width: 'auto', maxWidth: 120, objectFit: 'contain', opacity: 0.8 }} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* WORK GALLERY */}
+      <section className={styles.gallerySection} aria-label="Examples of our gas engineering work">
+        <div className="container">
+          <WorkGallery images={galleryImages} />
         </div>
       </section>
 
@@ -202,22 +192,12 @@ export default function GasServices() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className={styles.testimonialsSection} aria-label="Gas service customer reviews">
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>What Our Gas Customers Say</h2>
-          </div>
-          <TestimonialsCarousel testimonials={testimonials} filter="Gas" />
-        </div>
-      </section>
-
       {/* CTA */}
       <CTABanner
         heading="Need a Gas Engineer in Yeadon or Leeds?"
-        subtext="Domestic, commercial and industrial gas work — call us for Worcester Bosch boiler packages, gas safety certificates, or emergency call-outs across Yeadon, Guiseley, Rawdon, Horsforth and Leeds."
+        subtext="Domestic, commercial and industrial gas work — call us for Worcester Bosch boiler packages or gas safety certificates across Yeadon, Guiseley, Rawdon, Horsforth and Leeds."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </>

@@ -5,18 +5,25 @@ import { motion, useInView } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import ServiceCard from '../components/ui/ServiceCard'
 import FAQAccordion from '../components/ui/FAQAccordion'
-import TestimonialsCarousel from '../components/ui/TestimonialsCarousel'
 import CTABanner from '../components/ui/CTABanner'
 import Button from '../components/ui/Button'
-import { plumbingServices, plumbingFAQs, testimonials } from '../data/index'
+import WorkGallery from '../components/ui/WorkGallery'
+import { plumbingServices, plumbingFAQs } from '../data/index'
 import styles from './Plumbing.module.css'
+
+const galleryImages = [
+  { src: '/images/pipes1.jpg', alt: 'Copper pipework installed by Kearsley & Co', caption: 'Copper pipework' },
+  { src: '/images/water-cylinder1.jpg', alt: 'Unvented water cylinder installation', caption: 'Cylinder installations' },
+  { src: '/images/pipes.jpg', alt: 'Plumbing pipework close-up', caption: 'Precision plumbing' },
+  { src: '/images/pipes2.jpg', alt: 'Domestic plumbing system installed by Kearsley & Co', caption: 'Domestic installs' },
+]
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.kearsleyco.co.uk' },
-    { '@type': 'ListItem', position: 2, name: 'Plumbing', item: 'https://www.kearsleyco.co.uk/plumbing' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.kearsleygs.co.uk' },
+    { '@type': 'ListItem', position: 2, name: 'Plumbing', item: 'https://www.kearsleygs.co.uk/plumbing' },
   ],
 }
 
@@ -42,14 +49,21 @@ export default function Plumbing() {
         <title>Plumber Yeadon &amp; Leeds | Kearsley &amp; Co Gas Services</title>
         <meta
           name="description"
-          content="Expert plumbers in Yeadon and Leeds. Emergency plumbing, Worcester Bosch boiler installation, bathroom fitting, leak detection. Gas Safe registered. No call-out charges. Serving Yeadon, Guiseley, Rawdon, Horsforth and across Leeds."
+          content="Expert plumbers in Yeadon and Leeds. Worcester Bosch boiler installation, bathroom fitting, central heating. Gas Safe registered. No call-out charges. Serving Yeadon, Guiseley, Rawdon, Horsforth and across Leeds."
         />
         <meta property="og:title" content="Plumber Yeadon & Leeds | Kearsley & Co" />
         <meta
           property="og:description"
-          content="Expert plumbers in Yeadon and Leeds. Emergency plumbing, Worcester Bosch boiler installation, bathroom fitting, leak detection. No call-out charges."
+          content="Expert plumbers in Yeadon and Leeds. Worcester Bosch boiler installation, bathroom fitting, central heating. No call-out charges."
         />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/plumbing" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/plumbing" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/plumbing" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -78,7 +92,7 @@ export default function Plumbing() {
             </p>
             <div className={styles.heroCTA}>
               <Button to="/contact" variant="primary">Get a Free Quote</Button>
-              <Button href="tel:01130000000" variant="secondaryLight">Call 0113 XXX XXXX</Button>
+              <Button href="tel:01943662713" variant="secondaryLight">Call 01943 662713</Button>
             </div>
           </motion.div>
         </div>
@@ -99,6 +113,13 @@ export default function Plumbing() {
               <img key={logo.alt} src={logo.src} alt={logo.alt} style={{ height: 40, width: 'auto', maxWidth: 120, objectFit: 'contain', opacity: 0.8 }} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* WORK GALLERY */}
+      <section className={styles.gallerySection} aria-label="Examples of our plumbing work">
+        <div className="container">
+          <WorkGallery images={galleryImages} />
         </div>
       </section>
 
@@ -139,16 +160,15 @@ export default function Plumbing() {
       </section>
 
       {/* TRUST CALLOUT */}
-      <section className={styles.trustCallout} aria-label="Quality guarantee">
+      <section className={styles.trustCallout} aria-label="Quality assurance">
         <div className="container">
           <div className={styles.calloutInner}>
             <span className={styles.calloutIcon} aria-hidden="true">✓</span>
             <div>
               <h2 className={styles.calloutHeading}>Quality You Can Count On</h2>
               <p className={styles.calloutText}>
-                All work is fully insured and backed by our 12-month workmanship guarantee.
-                No hidden charges, no nasty surprises. We quote before we start and we stick
-                to the price — every time.
+                All work is fully insured. No hidden charges, no nasty surprises. We quote
+                before we start and we stick to the price — every time.
               </p>
             </div>
           </div>
@@ -174,22 +194,12 @@ export default function Plumbing() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className={styles.testimonialsSection} aria-label="Plumbing customer reviews">
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>What Our Plumbing Customers Say</h2>
-          </div>
-          <TestimonialsCarousel testimonials={testimonials} filter="Plumbing" />
-        </div>
-      </section>
-
       {/* CTA */}
       <CTABanner
         heading="Ready to Book a Plumber in Yeadon or Leeds?"
         subtext="Domestic, commercial and industrial plumbing — get in touch today for a free, no-obligation quote across Yeadon, Guiseley, Rawdon, Horsforth and Leeds."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </>

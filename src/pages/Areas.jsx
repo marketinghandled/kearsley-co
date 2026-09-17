@@ -21,17 +21,17 @@ const areaDetails = [
   {
     name: 'Rawdon',
     slug: 'rawdon',
-    desc: 'We cover Rawdon for all plumbing, gas and air conditioning services. Same-day attendance for emergencies — no call-out charge applies in your area.',
+    desc: 'We cover Rawdon for all plumbing, gas and air conditioning services. Same-day attendance available — no call-out charge applies in your area.',
   },
   {
     name: 'Horsforth',
     slug: 'horsforth',
-    desc: 'We cover all of Horsforth for plumbing, gas and air conditioning services. Gas Safe registered engineers on hand for boiler work, heating systems, and emergency plumbing.',
+    desc: 'We cover all of Horsforth for plumbing, gas and air conditioning services. Gas Safe registered engineers on hand for boiler work, heating systems, and plumbing repairs.',
   },
   {
     name: 'Otley',
     slug: 'otley',
-    desc: 'We cover Otley for all plumbing, gas and air conditioning services. From emergency call-outs to Worcester Bosch boiler installations, our team is ready to help.',
+    desc: 'We cover Otley for all plumbing, gas and air conditioning services. From general repairs to Worcester Bosch boiler installations, our team is ready to help.',
   },
   {
     name: 'Baildon',
@@ -54,8 +54,8 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Kearsley & Co Gas Services',
-  url: 'https://www.kearsleyco.co.uk',
-  telephone: '01130000000',
+  url: 'https://www.kearsleygs.co.uk',
+  telephone: '01943662713',
   areaServed: areas.map((area) => ({
     '@type': 'City',
     name: area,
@@ -83,8 +83,13 @@ export default function Areas() {
           content="Plumbing, gas and air conditioning services across Yeadon, Leeds and surrounding areas. Fast response, no call-out charge."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.kearsleyco.co.uk/areas" />
-        <link rel="canonical" href="https://www.kearsleyco.co.uk/areas" />
+        <meta property="og:url" content="https://www.kearsleygs.co.uk/areas" />
+        <meta property="og:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.kearsleygs.co.uk/images/og-image.png" />
+        <link rel="canonical" href="https://www.kearsleygs.co.uk/areas" />
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
       </Helmet>
 
@@ -106,8 +111,8 @@ export default function Areas() {
                 2 hours of your call.
               </p>
               <div className={styles.heroCTAs}>
-                <a href="tel:01130000000" className={styles.phoneBtn}>
-                  Call 0113 000 0000
+                <a href="tel:01943662713" className={styles.phoneBtn}>
+                  Call 01943 662713
                 </a>
                 <Link to="/contact" className={styles.quoteBtn}>Get a Free Quote</Link>
               </div>
@@ -126,8 +131,7 @@ export default function Areas() {
                 Based in Yeadon LS19, we cover north-west Leeds and surrounding towns —
                 from Otley in the north to Armley in the south, and from Baildon and Shipley
                 in the west to Headingley in the east. Fast response times mean most jobs are
-                attended within 2 hours of your call, with emergency cover available 24 hours
-                a day, 7 days a week.
+                attended within 2 hours of your call.
               </p>
               <p>
                 All areas below are within our standard coverage zone with no additional
@@ -143,10 +147,6 @@ export default function Areas() {
               <div className={styles.introStat}>
                 <span className={styles.statNum}>2hrs</span>
                 <span className={styles.statLabel}>Average response</span>
-              </div>
-              <div className={styles.introStat}>
-                <span className={styles.statNum}>24/7</span>
-                <span className={styles.statLabel}>Emergency cover</span>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function Areas() {
             <h2>All Areas We Cover</h2>
             <p className={styles.sectionSub}>
               Click any area for more details, or{' '}
-              <a href="tel:01130000000" style={{ color: 'var(--color-accent)', fontWeight: 600 }}>
+              <a href="tel:01943662713" style={{ color: 'var(--color-accent)', fontWeight: 600 }}>
                 call us
               </a>{' '}
               to confirm your postcode is within our zone.
@@ -213,7 +213,7 @@ export default function Areas() {
               >
                 <h3>{area.name}</h3>
                 <p>{area.desc}</p>
-                <a href="tel:01130000000" className={styles.areaCallLink}>
+                <a href="tel:01943662713" className={styles.areaCallLink}>
                   Call now for {area.name} →
                 </a>
               </motion.div>
@@ -233,8 +233,8 @@ export default function Areas() {
                 Based in Yeadon LS19 — covering a radius of approximately 8 miles
                 across west and north Leeds. Call us to confirm your area.
               </p>
-              <a href="tel:01130000000" className={styles.mapCTA}>
-                Call 0113 000 0000
+              <a href="tel:01943662713" className={styles.mapCTA}>
+                Call 01943 662713
               </a>
             </div>
           </div>
@@ -251,8 +251,8 @@ export default function Areas() {
               zone. Most calls are answered within 30 seconds.
             </p>
             <div className={styles.uncertainCTAs}>
-              <a href="tel:01130000000" className={styles.bigPhoneLink}>
-                0113 000 0000
+              <a href="tel:01943662713" className={styles.bigPhoneLink}>
+                01943 662713
               </a>
               <Link to="/contact" className={styles.formLink}>
                 Send an Enquiry
@@ -266,7 +266,7 @@ export default function Areas() {
         heading="Book a Plumber or Gas Engineer in Yeadon or Leeds Today"
         subtext="Fast response across Yeadon, Guiseley, Rawdon, Horsforth and all of north-west Leeds. No call-out charges."
         primaryCTA={{ label: 'Get a Free Quote', href: '/contact' }}
-        secondaryCTA={{ label: 'Call Now', href: 'tel:01130000000' }}
+        secondaryCTA={{ label: 'Call Now', href: 'tel:01943662713' }}
         variant="navy"
       />
     </>
