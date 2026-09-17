@@ -24,12 +24,12 @@ jobs:
       - name: Build
         run: npm run build:ssg
 
-      - name: Deploy to IONOS via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to IONOS via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.IONOS_FTP_SERVER }}
+          port: 22
           username: ${{ secrets.IONOS_FTP_USERNAME }}
           password: ${{ secrets.IONOS_FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./dist/
-          server-dir: ./public/
+          local_path: ./dist/*
+          remote_path: /public/
