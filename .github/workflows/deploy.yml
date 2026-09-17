@@ -41,3 +41,7 @@ jobs:
           uploads: |
             ./dist/ => ./
           delete: false
+
+      - name: Diagnose SFTP remote directory (after deploy)
+        run: |
+          sshpass -p "${{ secrets.IONOS_FTP_PASSWORD }}" sftp -oBatchMode=no -oStrictHostKeyChecking=no -b sftp_batch.txt "${{ secrets.IONOS_FTP_USERNAME }}@${{ secrets.IONOS_FTP_SERVER }}"
