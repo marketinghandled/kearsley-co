@@ -214,7 +214,7 @@ const formRef = useRef(null)
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionHeading}>What We Do</h2>
             <p className={styles.sectionSub}>
-              Everything you need under one roof — plumbing, gas, and air conditioning
+              Everything you need under one roof: plumbing, gas, and air conditioning
               for domestic, commercial and industrial customers across Leeds.
             </p>
           </div>
